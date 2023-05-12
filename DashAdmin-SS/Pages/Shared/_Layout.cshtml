@@ -1,0 +1,152 @@
+﻿@using Kendo.Mvc.UI;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://kendo.cdn.telerik.com/themes/6.2.0/bootstrap/bootstrap-main.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.kendostatic.com/2023.1.425/js/jquery.min.js"></script>
+    <script src="https://cdn.kendostatic.com/2023.1.425/js/jszip.min.js"></script>
+    <script src="https://cdn.kendostatic.com/2023.1.425/js/kendo.all.min.js"></script>
+    <script src="https://cdn.kendostatic.com/2023.1.425/js/kendo.aspnetmvc.min.js"></script>
+</head>
+<body>
+    <kendo-drawer name="drawer" mode="push" width="240" position="left" template-id="drawerTemplate" navigatable="true" auto-collapse="false">
+        <mini enabled="false" />
+        <content>
+            <div>
+                <main role="main" class="k-content">
+                    <kendo-appbar name="appbar" theme-color="AppBarThemeColor.Inherit" style="height:48px;">
+                        <items>
+                            <appbar-item type="AppBarItemType.ContentItem" template="<a id='menuIcon' class='k-button k-button-md k-button-rectangle k-rounded-md k-button-solid k-button-solid-base' style='border:0px; background:\\#FFFFFF;' href='\\#'><span class='k-icon k-i-menu'></span></a>"></appbar-item>
+                            <appbar-item type="AppBarItemType.Spacer" width="16px"></appbar-item>
+                            <appbar-item type="AppBarItemType.ContentItem" template="<div class='title'>Admin Dashboard</div>"></appbar-item>
+                            <appbar-item type="AppBarItemType.Spacer"></appbar-item>
+                            <appbar-item type="AppBarItemType.ContentItem" template="<div class='app-bar-link'><span class='k-icon k-i-notification'><span data-role='badge' class='k-badge k-badge-solid k-badge-error k-badge-md k-badge-dot k-badge-outside k-top-end'></span></span></div>"></appbar-item>
+                            <appbar-item type="AppBarItemType.Spacer" width="8px"></appbar-item>
+                            <appbar-item type="AppBarItemType.ContentItem" template="<a href='@Url.Page("About")' class='k-link app-bar-link'>About</a>"></appbar-item>
+                            <appbar-item type="AppBarItemType.ContentItem" template="<div style='' class='app-bar-link'>Contacts</div>"></appbar-item>
+                        </items>
+                    </kendo-appbar>
+                    @RenderBody()
+                </main>
+            </div>
+        </content>
+    </kendo-drawer>
+    @RenderBody()
+    <script id="drawerTemplate" type="text/x-kendo-template">
+            <div class="k-d-flex-col k-align-items-center k-justify-content-evenly" style="height:218px;">
+            <div class="k-avatar k-avatar-circle k-avatar-image k-avatar-lg" id="avatar"><img src='@Url.Content("images/signin-logo.png")' /></div>
+            <div id="name">Souhaib Aharmouch</div>
+            <div id="email">souhaib@westaus.com</div>
+
+               <form class="form-inline" action="/Login" method="get">
+            <button type="submit" class="k-button k-button-md k-rounded-md k-button-solid-secondary k-selected">Logout</button>
+        </form>
+        </div>
+
+            <ul id="panelbar">
+        <li>
+            
+            <a href="/"><span class="k-icon k-i-grid"></span> Dashboard</a>
+        </li>
+        <li>
+            <span class="k-icon k-i-folder"></span>
+            Content
+            <ul>
+                <li>
+                    <span class="k-icon k-i-note"></span>
+                     Header
+                    <ul>
+                            <li><a href="/Header/Homepage">Home Page</a></li>
+                            <li><a href="/Header/Aboutus">About Us</a></li>
+                            <li><a href="/Header/Contactus">Contact Us</a></li>
+                            <li><a href="/Header/Faq">FAQ</a></li>
+                            <li><a href="/Header/Aboutus">PrivacyC</a></li>
+                            <li><a href="/Header/Page">Page X</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Footer">Footer</a></li>
+                    <li><a href="/Pages">Pages</a></li>
+                    <li><a href="/Banners">Banners</a></li>
+                </ul>
+            </li>
+                    <li>
+               
+                <a href="/Users"> <span class="k-icon k-i-user"></span> Users</a>
+            </li>
+            <li>
+                
+                <a href="/Sync"><span class="k-icon k-i-refresh"></span> Sync</a>
+            </li>
+            <li>
+                <span class="k-icon k-i-gear"></span>
+                Settings
+                <ul>
+                    <li><a href="/Settings/Setting1"><span class="k-icon k-i-settings"></span> Setting 1</a></li>
+                    <li><<a href="/Settings/Setting2"><span class="k-icon k-i-settings"></span> Setting 2</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+
+
+
+    </script>
+
+
+    <style>
+        #name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        #email {
+            font-size: 12px;
+            text-decoration-line: underline;
+        }
+
+        .title {
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        .app-bar-link {
+            font-size: 14px;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+        .k-drawer-container {
+            background: inherit;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $("#panelbar").kendoPanelBar();
+
+            $("#menuIcon").click(function () {
+                var drawerInstance = $("#drawer").data("kendoDrawer");
+                var drawerContainer = drawerInstance.drawerContainer;
+                if (drawerContainer.hasClass("k-drawer-expanded")) {
+                    drawerInstance.hide();
+                } else {
+                    drawerInstance.show();
+                };
+                setTimeout(function () {
+                    kendo.resize($(".k-chart"));
+                }, 350);
+            })
+        })
+    </script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

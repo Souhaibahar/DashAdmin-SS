@@ -1,0 +1,78 @@
+﻿@page "/Login"
+@using Kendo.Mvc.UI;
+@model LoginModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "Shared/_SignInLayout.cshtml";
+    var token = Xsrf.GetAndStoreTokens(HttpContext).RequestToken;
+}
+<div class="form-container k-d-flex-col k-align-items-center k-justify-content-center">
+    <div class="logo-container k-d-flex-col k-align-items-center k-justify-content-center">
+        <img src="@Url.Content("images/signin-logo.png")" />
+        <div class="signin k-justify-content-center">Sign In</div>
+    </div>
+    <form action="@Url.Page("Index")" method="get">
+        <button class='k-button k-button-md k-rounded-md k-button-solid-primary' style='width:100%'>Sign In</button>
+    </form>
+
+    <div style="padding:10px;" class="k-d-flex-row k-align-items-center k-justify-content-center">
+        <span style="flex: none; order: 0; flex-grow: 1; margin: 0px 9px;"></span>
+        <span style="border: none; width: 104px; font-size:14px">Or continue with</span>
+        <span style="flex: none; order: 2; flex-grow: 1; margin: 0px 9px;"></span>
+    </div>
+    <div class="button-container k-d-flex-row k-justify-content-evenly">
+        <kendo-button name="facebook" icon="facebook" theme-color="ThemeColor.Secondary" fill-mode="ButtonFillMode.Solid"></kendo-button>
+        <kendo-button name="twitter" icon="twitter" theme-color="ThemeColor.Secondary" fill-mode="ButtonFillMode.Solid"></kendo-button>
+        <kendo-button name="reddit" icon="reddit" theme-color="ThemeColor.Secondary" fill-mode="ButtonFillMode.Solid"></kendo-button>
+    </div>
+</div>
+<style>
+    .form-container {
+        width: 270px;
+    }
+
+        .form-container > div > span {
+            display: inherit;
+            position: static;
+            width: 75px;
+            left: calc(50% - 75px/2 + 97.5px);
+            border: 1px solid #8F8F8F;
+        }
+
+    .logo-container {
+        gap: 20px;
+    }
+
+    .signin {
+        display: flex;
+        font-weight: 300;
+        font-size: 56px;
+        line-height: 67px;
+    }
+
+    .register {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    #Login > div.k-form-layout.k-d-grid.k-grid-cols-1 > div:nth-child(3) {
+        display: flex;
+    }
+
+    #RememberMe-form-label {
+        order: 1;
+        padding-left: 0.5em;
+    }
+</style>
+<script>
+    function setPasswordEditor(container, options) {
+        container.append($("<input type='password' class='k-textbox k-valid' id='Password' name='Password' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
+    }
+    $("#Login").append($("<input type='hidden' name='__RequestVerificationToken' value='@token' data-stop='true' />"))
+</script>
