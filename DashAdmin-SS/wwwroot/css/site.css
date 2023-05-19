@@ -1,6 +1,14 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+
+.blur {
+    filter: blur(5px); /* adjust this value as desired */
+    opacity: 0.5; /* adjust this value as desired */
+}
+
+
 .k-d-flex-row {
     display: flex;
     flex-direction: row;
@@ -74,6 +82,12 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+body, html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
 
 .footer {
     position: absolute;
@@ -81,4 +95,40 @@ body {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+}
+
+#panelbar-container {
+    width: 250px !important; /* Adjust to your preferred width */
+    margin: 0px;
+}
+
+#third-level-column {
+    width: 175px;
+    overflow-y: scroll;
+    max-height: 90vh;
+    ;
+    /* Adjust to your preferred width */
+}
+#drawer-container {
+    display: flex;
+    flex-direction: column;
+    height : 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+#drawer-content {
+    flex: 1;
+}
+
+#profile-container {
+    flex-shrink: 0; /* This will ensure that the profile-container doesn't shrink if there is not enough space */
+}
+
+#profile-item .k-icon.k-i-arrow-60-down {
+    display: none;
+}
+#profile-panelbar .k-selected {
+    background-color: inherit !important;
+    color: inherit !important;
 }

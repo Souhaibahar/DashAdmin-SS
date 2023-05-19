@@ -14,7 +14,7 @@
     <script src="https://cdn.kendostatic.com/2023.1.425/js/kendo.aspnetmvc.min.js"></script>
 </head>
 <body>
-    <kendo-drawer name="drawer" mode="push" width="240" position="left" template-id="drawerTemplate" navigatable="true" auto-collapse="false">
+    <kendo-drawer name="drawer" mode="push" width="220" position="left" template-id="drawerTemplate" navigatable="true" auto-collapse="false">
         <mini enabled="false" />
         <content>
             <div>
@@ -31,75 +31,113 @@
                             <appbar-item type="AppBarItemType.ContentItem" template="<div style='' class='app-bar-link'>Contacts</div>"></appbar-item>
                         </items>
                     </kendo-appbar>
-                    @RenderBody()
+                    <div class="row">
+                        <div id="third-level-column" class="border p-3 col-2" style="display: none">
+                            <span id="header-items" class="third-level-items">
+                                <p><a class="m-2 p-2" href="/Header/Homepage">Home Page</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">About Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Contactus">Contact Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Faq">FAQ</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">PrivacyC</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Page">Page X</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Homepage">Home Page</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">About Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Contactus">Contact Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Faq">FAQ</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">PrivacyC</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Page">Page X</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Homepage">Home Page</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">About Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Contactus">Contact Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Faq">FAQ</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">PrivacyC</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Page">Page X</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Homepage">Home Page</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">About Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Contactus">Contact Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Faq">FAQ</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">PrivacyC</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Page">Page X</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Homepage">Home Page</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">About Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Contactus">Contact Us</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Faq">FAQ</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">PrivacyC</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Page">Page X</a></p>
+                            </span>
+                            <span id="banners-items" class="third-level-items">
+                                <p><a class="m-2 p-2" href="/Header/Homepage">Banner 1 </a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">Banner 2</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Contactus">Banner 3</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Faq">Banner 4</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Aboutus">Banner 5</a></p>
+                                <p><a class="m-2 p-2" href="/Header/Page">Banner 6</a></p>
+                            </span>
+                        </div>
+                        <div class="col-10">
+                            @RenderBody()
+                        </div>
+
+                    </div>
                 </main>
             </div>
         </content>
     </kendo-drawer>
     @RenderBody()
+ 
     <script id="drawerTemplate" type="text/x-kendo-template">
-            <div class="k-d-flex-col k-align-items-center k-justify-content-evenly" style="height:218px;">
-            <div class="k-avatar k-avatar-circle k-avatar-image k-avatar-lg" id="avatar"><img src='@Url.Content("images/signin-logo.png")' /></div>
-            <div id="name">Souhaib Aharmouch</div>
-            <div id="email">souhaib@westaus.com</div>
+        <div id="drawer-container">
+           <div id="drawer-content">
+              <div class="row">
+                 <div id="panelbar-container" class="col">
+                    <div class="k-d-flex-col k-align-items-center k-justify-content-evenly" style="height:218px;">
+                       <div class="k-avatar k-avatar-circle k-avatar-image k-avatar-lg" id="avatar"><img src='@Url.Content("images/signin-logo.png")' /></div>
+                    </div>
+                    <ul id="panelbar">
+                       <li>
+                          <a href="/"><span class="k-icon k-i-grid"></span> Dashboard</a>
+                       </li>
+                       <li>
+                          <span class="k-icon k-i-folder"></span>
+                          Content
+                          <ul>
+                             <li data-target="#header-items">Header</li>
+                             <li><a href="/Footer">Footer</a></li>
+                             <li><a href="/Pages">Pages</a></li>
+                             <li data-target="#banners-items">Banners</a></li>
+                          </ul>
+                       <li><a href="/Users"> <span class="k-icon k-i-user"></span> Users</a></li>
+                       <li><a href="/Sync"><span class="k-icon k-i-refresh"></span> Sync</a></li>
+                       <li>
+                          <span class="k-icon k-i-settings"></span>
+                          Settings
+                          <ul>
+                             <li><a href="/Settings/Setting1"><span class="k-icon k-i-settings"></span> Setting 1</a></li>
+                             <li><<a href="/Settings/Setting2"><span class="k-icon k-i-settings"></span> Setting 2</a></li>
+                          </ul>
+                       </li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+           <div id="profile-container">
+               <ul id="profile-panelbar">
+                <li id="profile-item">
+                                     <img style="height:80px;width:80px;" src='@Url.Content("images/profile-picture.png")' alt="Profile Picture"/>
 
-               <form class="form-inline" action="/Login" method="get">
-            <button type="submit" class="k-button k-button-md k-rounded-md k-button-solid-secondary k-selected">Logout</button>
-        </form>
-        </div>
-
-            <ul id="panelbar">
-        <li>
-            
-            <a href="/"><span class="k-icon k-i-grid"></span> Dashboard</a>
-        </li>
-        <li>
-            <span class="k-icon k-i-folder"></span>
-            Content
-            <ul>
-                <li>
-                    <span class="k-icon k-i-note"></span>
-                     Header
                     <ul>
-                            <li><a href="/Header/Homepage">Home Page</a></li>
-                            <li><a href="/Header/Aboutus">About Us</a></li>
-                            <li><a href="/Header/Contactus">Contact Us</a></li>
-                            <li><a href="/Header/Faq">FAQ</a></li>
-                            <li><a href="/Header/Aboutus">PrivacyC</a></li>
-                            <li><a href="/Header/Page">Page X</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/Footer">Footer</a></li>
-                    <li><a href="/Pages">Pages</a></li>
-                    <li><a href="/Banners">Banners</a></li>
-                </ul>
-            </li>
-                    <li>
-               
-                <a href="/Users"> <span class="k-icon k-i-user"></span> Users</a>
-            </li>
-            <li>
-                
-                <a href="/Sync"><span class="k-icon k-i-refresh"></span> Sync</a>
-            </li>
-            <li>
-                <span class="k-icon k-i-gear"></span>
-                Settings
-                <ul>
-                    <li><a href="/Settings/Setting1"><span class="k-icon k-i-settings"></span> Setting 1</a></li>
-                    <li><<a href="/Settings/Setting2"><span class="k-icon k-i-settings"></span> Setting 2</a></li>
-                </ul>
-            </li>
-        </ul>
-
-
-
-
-
-
+                        <li><a href="/Profile/Edit">Edit Profile</a></li>
+                        <li>
+                            <form action="/Login" method="get">
+                                <button type="submit" class="k-button k-button-md k-rounded-md k-button-solid-secondary k-selected">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
     </script>
-
-
     <style>
         #name {
             font-weight: bold;
@@ -126,11 +164,38 @@
             background: inherit;
         }
     </style>
-
     <script>
         $(document).ready(function () {
-            $("#panelbar").kendoPanelBar();
+            var drawerInstance = $("#drawer").data("kendoDrawer");
+            drawerInstance.show();
+            var profilePanelBar = $("#profile-panelbar").kendoPanelBar({
+                select: function (e) {
+                    $('#panelbar').removeClass('blur');
 
+                },
+                expand: function (e) {
+                    $('#panelbar').addClass('blur');
+
+
+                }
+            }).data("kendoPanelBar");
+
+            var panelBar = $("#panelbar").kendoPanelBar({
+                select: function (e) {
+                    // Hide the third-level column when a top-level item is selected
+                    if ($(e.item).parent().is("#panelbar")) {
+                        $("#third-level-column").hide();
+                    }
+
+                    // Show corresponding third-level items when a second-level item is selected
+                    var target = $(e.item).data("target");
+                    if (target) {
+                        $(".third-level-items").hide();
+                        $(target).show();
+                        $("#third-level-column").show();
+                    }
+                }
+            }).data("kendoPanelBar");
             $("#menuIcon").click(function () {
                 var drawerInstance = $("#drawer").data("kendoDrawer");
                 var drawerContainer = drawerInstance.drawerContainer;
@@ -146,7 +211,6 @@
         })
     </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
