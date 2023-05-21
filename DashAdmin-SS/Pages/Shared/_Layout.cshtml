@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/admin-ui.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="https://kendo.cdn.telerik.com/themes/6.2.0/bootstrap/bootstrap-main.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.kendostatic.com/2023.1.425/js/jquery.min.js"></script>
     <script src="https://cdn.kendostatic.com/2023.1.425/js/jszip.min.js"></script>
@@ -84,133 +84,66 @@
         </content>
     </kendo-drawer>
     @RenderBody()
- 
+
     <script id="drawerTemplate" type="text/x-kendo-template">
         <div id="drawer-container">
-           <div id="drawer-content">
-              <div class="row">
-                 <div id="panelbar-container" class="col">
-                    <div class="k-d-flex-col k-align-items-center k-justify-content-evenly" style="height:218px;">
-                       <div class="k-avatar k-avatar-circle k-avatar-image k-avatar-lg" id="avatar"><img src='@Url.Content("images/signin-logo.png")' /></div>
+            <div id="drawer-content">
+                <div class="row">
+                    <div id="panelbar-container" class="col">
+                        <div class="k-d-flex-col k-align-items-center k-justify-content-evenly" style="height:218px;">
+                            <div class="k-avatar k-avatar-circle k-avatar-image k-avatar-lg" id="avatar">
+                                <img src='@Url.Content("images/signin-logo.png")' />
+                            </div>
+                        </div>
+                        <ul id="panelbar">
+                            <li>
+                                <a href="/"><span class="k-icon k-i-grid"></span> Dashboard</a>
+                            </li>
+                            <li>
+                                <span class="k-icon k-i-folder"></span>
+                                Content
+                                <ul>
+                                    <li data-target="#header-items">Header</li>
+                                    <li><a href="/Footer">Footer</a></li>
+                                    <li><a href="/Pages">Pages</a></li>
+                                    <li data-target="#banners-items">Banners</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Users"> <span class="k-icon k-i-user"></span> Users</a>
+                            </li>
+                            <li>
+                                <a href="/Sync"><span class="k-icon k-i-refresh"></span> Sync</a>
+                            </li>
+                            <li>
+                                <span class="k-icon k-i-settings"></span>
+                                Settings
+                                <ul>
+                                    <li><a href="/Settings/Setting1"><span class="k-icon k-i-settings"></span> Setting 1</a></li>
+                                    <li><a href="/Settings/Setting2"><span class="k-icon k-i-settings"></span> Setting 2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
-                    <ul id="panelbar">
-                       <li>
-                          <a href="/"><span class="k-icon k-i-grid"></span> Dashboard</a>
-                       </li>
-                       <li>
-                          <span class="k-icon k-i-folder"></span>
-                          Content
-                          <ul>
-                             <li data-target="#header-items">Header</li>
-                             <li><a href="/Footer">Footer</a></li>
-                             <li><a href="/Pages">Pages</a></li>
-                             <li data-target="#banners-items">Banners</a></li>
-                          </ul>
-                       <li><a href="/Users"> <span class="k-icon k-i-user"></span> Users</a></li>
-                       <li><a href="/Sync"><span class="k-icon k-i-refresh"></span> Sync</a></li>
-                       <li>
-                          <span class="k-icon k-i-settings"></span>
-                          Settings
-                          <ul>
-                             <li><a href="/Settings/Setting1"><span class="k-icon k-i-settings"></span> Setting 1</a></li>
-                             <li><<a href="/Settings/Setting2"><span class="k-icon k-i-settings"></span> Setting 2</a></li>
-                          </ul>
-                       </li>
-                    </ul>
-                 </div>
-              </div>
-           </div>
-           <div id="profile-container">
-               <ul id="profile-panelbar">
-                <li id="profile-item">
-                                     <img style="height:80px;width:80px;" src='@Url.Content("images/profile-picture.png")' alt="Profile Picture"/>
-
-                    <ul>
-                        <li><a href="/Profile/Edit">Edit Profile</a></li>
-                        <li>
-                            <form action="/Login" method="get">
-                                <button type="submit" class="k-button k-button-md k-rounded-md k-button-solid-secondary k-selected">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+                </div>
+            </div>
+            <div id="profile-container">
+                <ul id="profile-panelbar">
+                    <li id="profile-item">
+                        <img style="height:80px;width:80px;" src='@Url.Content("images/profile-picture.png")' alt="Profile Picture"/>
+                        <ul>
+                            <li><a href="/Profile/Edit">Edit Profile</a></li>
+                            <li>
+                                <form action="/Login" method="get">
+                                    <button type="submit" class="k-button k-button-md k-rounded-md k-button-solid-secondary k-selected">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </script>
-    <style>
-        #name {
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        #email {
-            font-size: 12px;
-            text-decoration-line: underline;
-        }
-
-        .title {
-            font-size: 18px;
-            line-height: 20px;
-        }
-
-        .app-bar-link {
-            font-size: 14px;
-            line-height: 20px;
-            cursor: pointer;
-        }
-
-        .k-drawer-container {
-            background: inherit;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
-            var drawerInstance = $("#drawer").data("kendoDrawer");
-            drawerInstance.show();
-            var profilePanelBar = $("#profile-panelbar").kendoPanelBar({
-                select: function (e) {
-                    $('#panelbar').removeClass('blur');
-
-                },
-                expand: function (e) {
-                    $('#panelbar').addClass('blur');
-
-
-                }
-            }).data("kendoPanelBar");
-
-            var panelBar = $("#panelbar").kendoPanelBar({
-                select: function (e) {
-                    // Hide the third-level column when a top-level item is selected
-                    if ($(e.item).parent().is("#panelbar")) {
-                        $("#third-level-column").hide();
-                    }
-
-                    // Show corresponding third-level items when a second-level item is selected
-                    var target = $(e.item).data("target");
-                    if (target) {
-                        $(".third-level-items").hide();
-                        $(target).show();
-                        $("#third-level-column").show();
-                    }
-                }
-            }).data("kendoPanelBar");
-            $("#menuIcon").click(function () {
-                var drawerInstance = $("#drawer").data("kendoDrawer");
-                var drawerContainer = drawerInstance.drawerContainer;
-                if (drawerContainer.hasClass("k-drawer-expanded")) {
-                    drawerInstance.hide();
-                } else {
-                    drawerInstance.show();
-                };
-                setTimeout(function () {
-                    kendo.resize($(".k-chart"));
-                }, 350);
-            })
-        })
-    </script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/admin-ui.js" asp-append-version="true"></script>
 </body>
 </html>
