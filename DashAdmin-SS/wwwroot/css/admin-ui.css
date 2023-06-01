@@ -1,23 +1,3 @@
-#name {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-#email {
-    font-size: 12px;
-    text-decoration-line: underline;
-}
-
-.title {
-    font-size: 18px;
-    line-height: 20px;
-}
-
-.app-bar-link {
-    font-size: 14px;
-    line-height: 20px;
-    cursor: pointer;
-}
 
 .k-drawer-container {
     background: inherit;
@@ -39,11 +19,6 @@ a.navbar-brand {
     word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-    color: #0366d6;
-}
-
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -56,15 +31,13 @@ a {
     border-color: #1861ac;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 @media (min-width: 768px) {
     html {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
@@ -80,22 +53,11 @@ html {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
 html {
     position: relative;
     min-height: 100%;
 }
 
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-}
 body, html {
     height: 100vh;
     margin: 0;
@@ -103,30 +65,19 @@ body, html {
     overflow: hidden;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-}
-
-#panelbar-container {
-    width: 250px !important; /* Adjust to your preferred width */
-    margin: 0px;
-}
-
 #third-level-column {
-    width: 175px;
+    width: 135px;
+    font-size: 12px;
+    margin: 0 !important;
+    padding: 5px !important;
     overflow-y: scroll;
     max-height: 90vh;
-    ;
-    /* Adjust to your preferred width */
 }
+
 #drawer-container {
     display: flex;
     flex-direction: column;
-    height : 100vh;
+    height: 100vh;
     padding: 0;
     margin: 0;
 }
@@ -136,12 +87,13 @@ body, html {
 }
 
 #profile-container {
-    flex-shrink: 0; /* This will ensure that the profile-container doesn't shrink if there is not enough space */
+    flex-shrink: 0;
 }
 
 #profile-item .k-icon.k-i-arrow-60-down {
     display: none;
 }
+
 #profile-panelbar .k-selected {
     background-color: inherit !important;
     color: inherit !important;
